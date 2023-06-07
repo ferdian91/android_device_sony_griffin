@@ -1,0 +1,2 @@
+on fs
+    export ENV /etc/mkshrc
