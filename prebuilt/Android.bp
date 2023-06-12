@@ -12,3 +12,13 @@ cc_prebuilt_binary {
     name: "sec_touchscreen_2.ko",
     srcs: ["sec_touchscreen_2.ko"],
 }
+
+cc_prebuilt_binary {
+    name: "et580-int.ko",
+    srcs: ["et580-int.ko"],
+}
+
+cc_prebuilt_binary {
+    name: "tcs3490.ko",
+    srcs: ["tcs3490.ko"],
+}
