@@ -11,6 +11,9 @@ AB_OTA_PARTITIONS += \
     vbmeta \
     dtbo
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := griffin,bahamut
+
 # A/B support
 PRODUCT_PACKAGES += \
     otapreopt_script \
@@ -33,10 +36,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl.recovery \
     bootctrl.$(PRODUCT_PLATFORM) \
     bootctrl.$(PRODUCT_PLATFORM).recovery
-
-# Copy modules for depmod
-PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*.ko,$(DEVICE_PATH)/prebuilt,$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib/modules)
 
 # disable this for twrp 12.1+
 # Apex libraries
