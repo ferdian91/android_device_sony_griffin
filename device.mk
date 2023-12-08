@@ -29,16 +29,10 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.0-impl \
     android.hardware.boot@1.0-service \
-    android.hardware.boot@1.0-impl-wrapper.recovery \
-    android.hardware.boot@1.0-impl-wrapper \
     android.hardware.boot@1.0-impl.recovery \
     android.hardware.health@2.1-impl.recovery \
     bootctrl.$(PRODUCT_PLATFORM) \
     bootctrl.$(PRODUCT_PLATFORM).recovery
-
-PRODUCT_PACKAGES += \
-    android.hardware.fastboot@1.0-impl-mock \
-    fastbootd
 
 # Copy modules for depmod
 PRODUCT_COPY_FILES += \
