@@ -1,7 +1,6 @@
 # Board Info
 ro.product.board=msmnile
 ro.board.platform=msmnile
-ro.display.series=Xperia 1
 persist.fuse_sdcard=true
 
 # Crypto
@@ -10,5 +9,4 @@ ro.crypto.allow_encrypt_override=true
 persist.vold.ecryptfs_supported=true
 vendor.gatekeeper.disable_spu=true
 ro.logd.auditd=false
-ro.crypto.set_dun=true
 ro.hardware.keystore_desede=true
