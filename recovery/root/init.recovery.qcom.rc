@@ -27,20 +27,24 @@
 
 on init
     setprop crypto.ready 1
-    setprop sys.usb.configfs 1
+
+on property:ro.boot.usbcontroller=*
+    setprop sys.usb.controller ${ro.boot.usbcontroller}
+    write /sys/class/udc/${ro.boot.usbcontroller}/device/../mode peripheral
 
 on fs
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-	start boot-hal-1-0
-	start vibrator-service
+    start boot-hal-1-0
+    start vibrator-service
 
-on boot 
+on post-fs
     insmod /vendor/lib/modules/sec_touchscreen.ko
     insmod /vendor/lib/modules/sec_touchscreen_2.ko
     write /sys/devices/virtual/sec/tsp/after_work 1
     write /proc/touchpanel/gesture_enable 1
+    setprop sys.usb.config adb
 
 service time_daemon /system/bin/time_daemon
     user root
