@@ -1,7 +1,9 @@
 # Board Info
 ro.product.board=msmnile
 ro.board.platform=msmnile
-persist.fuse_sdcard=true
+persist.service.adb.enable=1                                                    
+persist.service.debuggable=1
+persist.sys.usb.config=adb
 
 # Crypto
 ro.crypto.volume.filenames_mode=aes-256-cts
