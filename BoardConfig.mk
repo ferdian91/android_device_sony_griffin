@@ -78,7 +78,7 @@ BOARD_KERNEL_CMDLINE += buildproduct=griffin
 BOARD_KERNEL_CMDLINE += buildid=KUMANO-1.2.0-DOCOMO-211005-2055
 BOARD_KERNEL_CMDLINE += panic_on_err=1
 BOARD_KERNEL_CMDLINE += zram.backend=z3fold
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 #BOARD_KERNEL_CMDLINE += androidboot.fastboot=1
 
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/$(PRODUCT_RELEASE_NAME)/Image
