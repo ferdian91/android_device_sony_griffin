@@ -1,8 +1,12 @@
 # Board Info
 ro.product.board=msmnile
 ro.board.platform=msmnile
-ro.display.series=Xperia 1
-persist.fuse_sdcard=true
+
+# ADB
+ro.adb.secure=0
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb
 
 # Crypto
 ro.crypto.volume.filenames_mode=aes-256-cts
