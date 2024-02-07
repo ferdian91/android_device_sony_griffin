@@ -29,7 +29,7 @@ DEVICE_PATH := device/sony/griffin
 ALLOW_MISSING_DEPENDENCIES := true
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := griffin
+TARGET_OTA_ASSERT_DEVICE := J9110,J9210,J8110,J8170,J9150,J9180,SO-03L,SOV40,802SO,J8210,J8270,J9260,SO-01M,SOV41,901SO
 
 # A/B updater updatable partitions list. Keep in sync with the partition list
 # with "_a" and "_b" variants in the device. Note that the vendor can add more
