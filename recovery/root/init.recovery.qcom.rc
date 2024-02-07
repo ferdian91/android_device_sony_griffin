@@ -43,6 +43,14 @@ on boot
     start boot-hal-1-0
     start vibrator-service
     setprop sys.usb.config adb,mtp
+    start xperia-system
+
+service xperia-system /system/bin/xperia-system.sh
+    user root
+    group root
+    disabled
+    override
+    seclabel u:r:recovery:s0
 
 service time_daemon /system/bin/time_daemon
     user root
