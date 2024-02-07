@@ -23,8 +23,22 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+DEVICE_PATH := device/sony/griffin
+
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := griffin
+
+# A/B updater updatable partitions list. Keep in sync with the partition list
+# with "_a" and "_b" variants in the device. Note that the vendor can add more
+# more partitions to this list for the bootloader and radio.
+AB_OTA_UPDATER := true
+AB_OTA_PARTITIONS += \
+    boot \
+    system \
+    vendor
 
 # Architecture
 TARGET_ARCH := arm64
