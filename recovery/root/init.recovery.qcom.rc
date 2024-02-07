@@ -25,67 +25,33 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+import /init.recovery.qcom_decrypt.rc
+
+on init
+    setprop crypto.ready 1
+
 on fs
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
-    chmod 0660 /dev/qseecom
-    chown system drmrpc /dev/qseecom
-    chmod 0664 /dev/ion
-    chown system system /dev/ion
-    install_keyring
-
-on init
-    start vendor.qseecomd
-    start boot-hal-1-0
-    start systemcheck
-    setprop crypto.ready 1
-
-on property:vendor.sys.listeners.registered=true
-    start keymaster-4-0
-    start gatekeeper-1-0
 
 on boot 
     insmod /vendor/lib/modules/sec_touchscreen.ko
     insmod /vendor/lib/modules/sec_touchscreen_2.ko
     write /sys/devices/virtual/sec/tsp/after_work 1
     write /proc/touchpanel/gesture_enable 1
+    start boot-hal-1-0
     start vibrator-service
-    setprop sys.usb.config adb
+    setprop sys.usb.config adb,mtp
 
-service vendor.qseecomd /vendor/bin/qseecomd
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-service keymaster-4-0 /vendor/bin/hw/android.hardware.keymaster@4.0-service-qti
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-service gatekeeper-1-0 /vendor/bin/hw/android.hardware.gatekeeper@1.0-service-qti
-    user root
-    group root
-    disabled
-    seclabel u:r:recovery:s0
-
-service systemcheck /vendor/bin/systemcheck.sh
-    user root
-    group root
-    disabled
-    oneshot
-    seclabel u:r:recovery:s0
-
-service time_daemon /vendor/bin/time_daemon
+service time_daemon /system/bin/time_daemon
     user root
     group root
     oneshot
     disabled
     seclabel u:r:recovery:s0
 
-service vibrator-service /vendor/bin/hw/vendor.qti.hardware.vibrator.service
+service vibrator-service /system/bin/vendor.qti.hardware.vibrator.service
     class hal
     user root
     group root input
